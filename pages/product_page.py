@@ -13,7 +13,6 @@ class ProductPage(BasePage):
         print (f"{basket_name} add in basket!")
         assert product_name == basket_name, "Names are not equal"
        
-
     def should_be_price_in_basket_equal_product(self):
         product_price = self.browser.find_element(*ProducttLocators.PRODUCT_PRICE).text
         basket_price = self.browser.find_element(*ProducttLocators.BASKET_PRICE).text
