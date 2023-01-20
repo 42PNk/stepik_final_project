@@ -17,15 +17,14 @@ import time
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer8",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"])
 
+@pytest.mark.need_review
 def test_guest_can_add_product_to_basket(browser, link):
-    
-    page = ProductPage(browser, link)                      # инициализируем Page Object c главной страницы, 
-                                                           # передаем в конструктор экземпляр драйвера и url адрес
-    page.open()                                            # открываем страницу
-    page.product_add_to_basket()                           # добавляем продукт в корзину
-    page.solve_quiz_and_get_code()                         # получаем код и вводим его
-    page.should_be_name_in_basket_equal_product()          # сравниваем наименования товара
-    page.should_be_price_in_basket_equal_product()         # сравниваем цены товара
+    page = ProductPage(browser, link)                       
+    page.open()                                            
+    page.product_add_to_basket()                           
+    page.solve_quiz_and_get_code()                         
+    page.should_be_name_in_basket_equal_product()          
+    page.should_be_price_in_basket_equal_product()         
 
 @pytest.mark.xfail
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
@@ -55,12 +54,14 @@ def test_guest_should_see_login_link_on_product_page(browser):
     page.open()
     page.should_be_login_link()
 
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link)
     page.open()
     page.go_to_login_page()
 
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
     page = ProductPage(browser, link)
@@ -87,6 +88,7 @@ class TestUserAddToBasketFromProductPage():
         page.open()
         page.should_not_be_success_message()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         page = ProductPage(browser, self.link)                      
         page.open()                                            

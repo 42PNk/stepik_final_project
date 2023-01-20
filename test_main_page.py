@@ -9,14 +9,11 @@ import pytest
 class TestLoginFromMainPage():
     def test_guest_can_go_to_login_page(self, browser):
         link = "http://selenium1py.pythonanywhere.com/"
-        self.page = BasePage(browser, link)                        # инициализируем Page Object c главной страницы, 
-                                                                   # передаем в конструктор экземпляр драйвера и url адрес
-     
-        self.page.open()                                           # открываем страницу
-        self.page.go_to_login_page()                               # переходим на страницу логина
-        self.login_page = LoginPage(browser, browser.current_url)  # инициализируем Page Object со страницей логина
-                                                                   # передаем в конструктор экземпляр драйвера и url адрес
-        self.login_page.should_be_login_page()                     # выполняем проверку страницы логина
+        self.page = BasePage(browser, link)                        
+        self.page.open()                                           
+        self.page.go_to_login_page()                               
+        self.login_page = LoginPage(browser, browser.current_url)  
+        self.login_page.should_be_login_page()                     
 
     def test_guest_should_see_login_link(self, browser):
         link = "http://selenium1py.pythonanywhere.com/"
